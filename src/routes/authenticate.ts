@@ -9,4 +9,4 @@ export const routerAuthenticate = express.Router({
 });
 
 routerAuthenticate.route('/user/signin').post(authenticateController.signin);
-//routerAuthenticate.route('/user/login').post(authenticateController.login);
+routerAuthenticate.route('/user/login').post(authenticateController.login);

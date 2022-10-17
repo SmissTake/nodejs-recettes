@@ -16,7 +16,7 @@ export class UserController extends CrudController{
         User.findOne({ where: { lastname:req.params.name } })
         .then((user) => res.json(user))
         .catch(error => {
-            console.log(error)
+            console.log(error);
             res.send('no User found');
         });
     }

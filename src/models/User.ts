@@ -35,7 +35,8 @@ User.init({
     mail: {
         type: DataTypes.STRING,
         validate: {
-            isAlpha: true,
+            isEmail: true,
+            max: 200,
         },
         allowNull: false
     },
@@ -58,8 +59,8 @@ User.init({
 {
     sequelize,
     tableName: "users",
+    timestamps: false
 }
 );
 
 User.belongsTo(Permission, {foreignKey: "idPermissions"});
-Permission.hasOne(User, {foreignKey: "idPermissions"});

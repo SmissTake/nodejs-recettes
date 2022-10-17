@@ -4,26 +4,20 @@ import { CrudController } from "./CrudController";
 
 export class UserController extends CrudController{
     public read(req: Request, res: Response): void{
-        const user = User.findByPk(req.params.id).then((user) => res.json(user)).catch(error => console.log(error));
-        if(user === null){
-            console.log('not found');
+        User.findByPk(req.params.id)
+        .then((user) => res.json(user))
+        .catch(error => {
+            console.log(error)
             res.send('no user found');
-        }
-        else{
-            console.log('User Found');
-            res.send(user instanceof User);
-        }
+        });
     }
 
     public showOne(req: Request, res: Response): void{
-        const user = User.findOne({ where: { lastname:req.params.name } }).then((user) => res.json(user)).catch(error => console.log(error));
-        if(user === null){
-            console.log('not found');
+        User.findOne({ where: { lastname:req.params.name } })
+        .then((user) => res.json(user))
+        .catch(error => {
+            console.log(error)
             res.send('no User found');
-        }
-        else{
-            console.log('User Found');
-            res.send(user instanceof User);
-        }
+        });
     }
 }

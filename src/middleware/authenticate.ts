@@ -22,6 +22,16 @@ export const authorize = (allowedAccessTypes: string[]) => async (req: Request, 
         }
         console.log('avant validate', jwt);
 
+        if (!jwt) {
+            return res.status(status.UNAUTHORIZED).json({ message: 'Invalid token ' });
+        }
+
+        // remove Bearer if using Bearer Authorization mechanism
+        if (jwt.toLowerCase().startsWith('bearer')) {
+            jwt = jwt.slice('bearer'.length).trim();
+        }
+        console.log('avant validate', jwt);
+
         // verify token hasn't expired yet and is valid
         const decodedToken = await validateToken(jwt);
         /* const decodedToken = {

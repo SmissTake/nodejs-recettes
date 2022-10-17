@@ -1,6 +1,7 @@
 import {Model, DataTypes} from 'sequelize'
 import { sequelize } from '../config/database'
 import { Course } from './Course';
+import { User } from './User';
 
 export class Recipe extends Model
 {
@@ -22,9 +23,6 @@ Recipe.init({
     },
     name: {
         type: DataTypes.STRING,
-        validate: {
-            isAlpha: true,
-        },
         allowNull: false
     },
     slug: {
@@ -44,6 +42,14 @@ Recipe.init({
         allowNull: false,
         references: {
             model: Course,
+            key: 'id',
+               }
+    },
+    idUsers: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: User,
             key: 'id',
                }
     }

@@ -18,7 +18,9 @@ GET with recipe name: [127.0.0.1:8100/recipe/showone/NAME](127.0.0.1:8100/recipe
 
 ## POST
 
-Add recipe : [127.0.0.1:8100/recipe/add](127.0.0.1:8100/recipe/add)
+### Add recipe : 
+
+[127.0.0.1:8100/recipe/add](127.0.0.1:8100/recipe/add)
 
 Parameter: Body > raw > JSON
 ```
@@ -28,6 +30,31 @@ Parameter: Body > raw > JSON
     "guests" : "4",
     "idCourses" : "2",
     "idUsers" : "1"
+}
+```
+
+### Add User (Sign in) :
+
+[127.0.0.1:8100/user/signin](127.0.0.1:8100/user/signin)
+
+Parameter: Body > raw > JSON
+```
+{
+    "firstname":"firstname",
+    "lastname":"lastname",
+    "password":"password",
+    "mail":"mail"
+}
+```
+
+### Log in :
+[127.0.0.1:8100/user/login](127.0.0.1:8100/user/login)
+
+Parameter: Body > raw > JSON
+```
+{
+    "password":"password",
+    "mail":"mail"
 }
 ```
 

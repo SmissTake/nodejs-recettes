@@ -5,8 +5,8 @@ import { Recipe } from './Recipe';
 
 export class Course extends Model
 {
-    public id!: number;
-    public menu!: string;
+    declare id: number;
+    declare menu: string;
 }
 
 Course.init({

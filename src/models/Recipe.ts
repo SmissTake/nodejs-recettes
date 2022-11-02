@@ -5,14 +5,14 @@ import { User } from './User';
 
 export class Recipe extends Model
 {
-    public id!: number;
-    public name!: string;
-    public slug!: string;
-    public description!: string;
-    public guests! : number;
-    public user_id! : number;
-    public created_at! : Date;
-    public updated_at! : Date;
+    declare id: number;
+    declare name: string;
+    declare slug: string;
+    declare description: string;
+    declare guests: number;
+    declare user_id: number;
+    declare created_at: Date;
+    declare updated_at: Date;
 }
 
 Recipe.init({
@@ -64,3 +64,6 @@ Recipe.init({
 
 Recipe.belongsTo(Course, {foreignKey: "idCourses"});
 Course.hasOne(Recipe, {foreignKey: "idCourses"});
+
+Recipe.belongsTo(User, {foreignKey: "idUsers"});
+User.hasOne(Recipe, {foreignKey: "idUsers"});

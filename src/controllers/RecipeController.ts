@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
-import { ParamsDictionary } from "express-serve-static-core";
-import { copyFileSync } from "fs";
-import { ParsedQs } from "qs";
+import { Course } from "../models/Course";
 import { Recipe } from "../models/Recipe";
+import { User } from "../models/User";
 import { CrudController } from "./CrudController";
 
 export class RecipeController extends CrudController{
@@ -17,6 +16,15 @@ export class RecipeController extends CrudController{
 
     public showOne(req: Request, res: Response): void{
         Recipe.findOne({ where: { name:req.params.name } })
+        .then((recipe) => res.json(recipe))
+        .catch(error => {
+            console.log(error)
+            res.send('no recipe found');
+        });
+    }
+
+    public list(req: Request, res: Response): void{
+        Recipe.findOne({ where: { id:req.params.id }, include:[Course, User] })
         .then((recipe) => res.json(recipe))
         .catch(error => {
             console.log(error)
